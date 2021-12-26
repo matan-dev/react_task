@@ -1,19 +1,21 @@
+import { SUBMIT_USER, LOADING, ERROR } from "../actions/actionsTypes";
+
 export const createUser = (newUser) => {
   return {
-    type: "USER_SUBMIT",
-    newUser: { ...newUser },
+    type: SUBMIT_USER,
+    payload: { ...newUser },
   };
 };
 export const setError = (value) => {
   return {
-    type: "ERROR",
-    error: value,
+    type: ERROR,
+    payload: value,
   };
 };
 export const setLoading = (value) => {
   return {
-    type: "LOADING",
-    loading: value,
+    type: LOADING,
+    payload: value,
   };
 };
 export const submitUser = (newUser) => {
@@ -26,6 +28,8 @@ export const submitUser = (newUser) => {
       dispatch(createUser(newUser));
       dispatch(setLoading(false));
     }, 2500);
-    //at real api call => .then(()=>{....}).catch(()=>dispatch(setError(true)))
+    // at real api call => .then(()=>{....})
+    // .catch(()=>dispatch(setError(true)))
+    // .finelly(()=> dispatch(setLoading(false));)
   };
 };

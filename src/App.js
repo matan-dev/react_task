@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css";
 import { Route, Routes ,Navigate } from "react-router-dom";
-import Navbar from "./components/NavBar/Nav";
-import Userform from "./components/UserForm/Userform";
-import UserContainer from "./components/UsersContainer/Userscontainer";
+import Navbar from "./modules/NavBar/Nav";
+import Userform from "./modules/UserForm/Userform";
+import UserContainer from "./modules/UsersContainer/Userscontainer";
 const App = () => {
   return (
     <div className="App">

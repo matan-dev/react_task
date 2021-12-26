@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Userform.css";
 import TextField from "@material-ui/core/TextField";
-import StyledButton from "../UI/Button/styledButton";
+import Button from "../../components/Button/Button";
 import { connect } from "react-redux";
 import { submitUser } from "../../actions/actions";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -44,7 +44,7 @@ const Userform = (props) => {
     RepeatedPassword: "",
   });
   const [forms, setForms] = useState(defaultForms);
-  
+
   useEffect(() => {
     if (props.Isloading === false && props.error === false)
       setUser({
@@ -97,20 +97,17 @@ const Userform = (props) => {
   const ValidateForm = () => {
     //looping over the newuser  object and validate each , set error flag to true in each field if needed.
     let HasError = false;
-    
+
     Object.keys(newUser).forEach((field, index) => {
       let ValidationResult = Validation(newUser[field], field);
 
-      if (!ValidationResult[0]) 
-      {
+      if (!ValidationResult[0]) {
         let tempForms = [...forms];
         tempForms[index].error = true;
         tempForms[index].helperText = ValidationResult[1]; //setting the error string
         setForms(tempForms);
         HasError = true;
-      } 
-      else
-       {
+      } else {
         let tempForms = [...forms];
         tempForms[index].error = false;
         tempForms[index].helperText = defaultForms[index].helperText; //setting the error string to default
@@ -126,7 +123,7 @@ const Userform = (props) => {
   if (props.error)
     message = (
       <>
-        <StyledButton onClick={ValidateForm}>SUBMIT</StyledButton>
+        <Button onClick={ValidateForm}>SUBMIT</Button>
         <span>Something went wrong</span>{" "}
       </>
     );
@@ -135,11 +132,11 @@ const Userform = (props) => {
       props.Isloading === true ? (
         <CircularProgress />
       ) : (
-        <StyledButton onClick={ValidateForm}>SUBMIT</StyledButton>
+        <Button onClick={ValidateForm}>SUBMIT</Button>
       );
 
   return (
-    <div id="InputsContainer">
+    <div className="InputsContainer">
       {forms.map((inputField, index) => (
         <TextField
           error={inputField.error}
@@ -156,7 +153,7 @@ const Userform = (props) => {
           value={newUser[inputField.field]}
         />
       ))}
-      <div id="helperContainer">{message}</div>
+      <div className="helperContainer">{message}</div>
     </div>
   );
 };

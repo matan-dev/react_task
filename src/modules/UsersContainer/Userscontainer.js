@@ -1,6 +1,6 @@
 import React from "react";
 import "./Userscontainer.css";
-import Usercard from "../UI/singleUserCard/singleCard";
+import Card from "../../components/Card/Card";
 import { connect } from "react-redux";
 
 const userscontainer = (props) => {
@@ -9,10 +9,10 @@ const userscontainer = (props) => {
       <span>No Users To Display</span>
     ) : (
       props.Users.map((user, index) => (
-        <Usercard
+        <Card
           key={index}
-          UserName={user.UserName}
-          PhoneNumber={user.PhoneNumber}
+          userName={user.UserName}
+          phoneNumber={user.PhoneNumber}
         />
       ))
     );

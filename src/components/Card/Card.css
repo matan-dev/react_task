@@ -1,0 +1,21 @@
+.Card {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  box-shadow: 0px 1px 1px 1.5px #d1d0cd;
+  margin: 7px;
+  width: 280px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.Card h4 {
+  font-size: 17px;
+  margin: 3px;
+  text-align: left;
+  font-family: monospace;
+  font-weight: bold;
+}
+.Card h4 span {
+  font-family: monospace;
+  font-size: 15px;
+  font-weight: normal;
+}
