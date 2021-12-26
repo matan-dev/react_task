@@ -1,0 +1,16 @@
+#CardsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  height: calc(100vh - 200px);
+  width: fit-content;
+  padding: 0px 20px 0px 20px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border-radius: 8px;
+  margin: 30px auto;
+}
+#CardsContainer::-webkit-scrollbar {
+  width: 0px !important;
+}
