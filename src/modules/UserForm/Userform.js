@@ -66,7 +66,7 @@ const Userform = (props) => {
       case "PhoneNumber":
         return [
           userInput.match(
-            /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+            /(^\d{0,10}$|^\d{3}-\d{3}-\d{4}$|^\d{3}-\d{2}-\d{3}$|^\d{2,3}-\d{5,7}$)/gm
           )
             ? true
             : false,
@@ -97,24 +97,24 @@ const Userform = (props) => {
   const ValidateForm = () => {
     //looping over the newuser  object and validate each , set error flag to true in each field if needed.
     let HasError = false;
+    const tempForms = forms.map((form) => ({ ...form })); //deep clone , because objects & arrays are referenced
 
     Object.keys(newUser).forEach((field, index) => {
-      let ValidationResult = Validation(newUser[field], field);
-
-      if (!ValidationResult[0]) {
-        let tempForms = [...forms];
+      const [isValid, errorMessage] = Validation(newUser[field], field);
+      if (!isValid) {
         tempForms[index].error = true;
-        tempForms[index].helperText = ValidationResult[1]; //setting the error string
-        setForms(tempForms);
+        tempForms[index].helperText = errorMessage; //setting the error string
         HasError = true;
       } else {
-        let tempForms = [...forms];
         tempForms[index].error = false;
-        tempForms[index].helperText = defaultForms[index].helperText; //setting the error string to default
-        setForms(tempForms);
+        tempForms[index].helperText = defaultForms[index].helperText; //setting the error string
       }
     });
-    if (HasError) return;
+
+    if (HasError) {
+      setForms(tempForms);
+      return;
+    }
     setForms(defaultForms);
     props.Submit(newUser);
   };
