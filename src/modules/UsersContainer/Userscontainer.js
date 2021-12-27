@@ -16,7 +16,7 @@ const userscontainer = (props) => {
         />
       ))
     );
-  return <div id="CardsContainer">{users}</div>;
+  return <div className="CardsContainer">{users}</div>;
 };
 
 const mapStateToProps = (state) => {

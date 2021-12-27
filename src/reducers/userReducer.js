@@ -1,8 +1,4 @@
-import {
-  SUBMIT_USER,
-  LOADING,
-  ERROR,
-} from "../actions/actionsTypes";
+import { SUBMIT_USER, LOADING, ERROR } from "../actions/actionsTypes";
 const initionalState = {
   loading: false,
   error: false,
@@ -15,7 +11,7 @@ const reducer = (state = initionalState, { type, payload }) => {
     case SUBMIT_USER:
       return { ...state, users: state.users.concat(payload) };
     case LOADING:
-      return { ...state, loading: payload};
+      return { ...state, loading: payload };
     case ERROR:
       return { ...state, error: payload };
     default:

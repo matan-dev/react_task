@@ -110,7 +110,6 @@ const Userform = (props) => {
         tempForms[index].helperText = defaultForms[index].helperText; //setting the error string
       }
     });
-
     if (HasError) {
       setForms(tempForms);
       return;
@@ -118,7 +117,6 @@ const Userform = (props) => {
     setForms(defaultForms);
     props.Submit(newUser);
   };
-
   let message = null;
   if (props.error)
     message = (

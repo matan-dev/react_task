@@ -52,4 +52,7 @@
     flex-direction: column;
     padding-top: 20px;
   }
+  .InputsContainer::-webkit-scrollbar {
+    width: 0px !important;
+  }
 }
